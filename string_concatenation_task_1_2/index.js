@@ -38,3 +38,4 @@ console.log(
     "Last letter: " +
     myInfoText[myInfoText.length - 1]
 );
+
