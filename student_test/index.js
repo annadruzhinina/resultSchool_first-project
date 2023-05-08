@@ -5,7 +5,8 @@ incorrectAnswers = 0;
 
 let question_1 = Number(prompt("Сколько будет 2 + 2?"));
 
-if (question_1 === 2) {
+if (question === 2) {
+  debugger;
   correctAnswers++;
 } else {
   incorrectAnswers++;
