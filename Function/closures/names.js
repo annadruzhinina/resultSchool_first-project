@@ -1,0 +1,3 @@
+function showLoader() {}
+
+function goToNextPage() {}
