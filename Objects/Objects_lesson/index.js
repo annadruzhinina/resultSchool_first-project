@@ -148,3 +148,37 @@ console.log("devUnionObjects", devUnionObjects);
 // Second varinat
 const dev2 = Object.assign(devExtraInfo, devUnionObjects);
 console.log("dev2", dev2);
+
+// ⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️
+// Optional Chain ?.
+// ⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️
+
+const developerOptionalChain = {
+  name: "Anna",
+  job: "Front-End Developer",
+  experience: 24,
+  jobAllInfo: {
+    type: "Front-End",
+    framework: "ReactJS",
+  },
+};
+
+// console.log(developerOptionalChain.jobAllInfo.framework);
+// 1
+// if (developerOptionalChain.jobAllInfo.framework)
+// 2
+// if (
+//   developerOptionalChain &&
+//   developerOptionalChain.jobAllInfo &&
+//   developerOptionalChain.jobAllInfo.framework
+// ){
+//   console.log("Developer is familiar with fraimwork");
+// } else {
+//   console.log("Developer is not familiar with fraimwork");
+// }
+// 3
+if (developerOptionalChain?.jobAllInfo?.framework?.name) {
+  console.log("Developer is familiar with fraimwork");
+} else {
+  console.log("Developer is not familiar with fraimwork");
+}
