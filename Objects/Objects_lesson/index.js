@@ -95,13 +95,13 @@ for (const key in goodInfo) {
 }
 // Object.keys
 const keys = Object.keys(goodInfo);
-console.log(keys);
+console.log("keys", keys);
 // Object.values
 const values = Object.values(goodInfo);
 console.log(values);
 // Object.entries
 const entries = Object.entries(goodInfo);
-console.log(entries);
+console.log("entries", entries);
 console.log(entries[0]);
 
 // ⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️
@@ -145,7 +145,7 @@ const devUnionObjects = {
   ...devExtraInfo,
 };
 console.log("devUnionObjects", devUnionObjects);
-// Second varinat
+// Second varinat обьединить обьекты
 const dev2 = Object.assign(devExtraInfo, devUnionObjects);
 console.log("dev2", dev2);
 
