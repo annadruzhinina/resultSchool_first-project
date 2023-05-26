@@ -15,12 +15,17 @@ const bird = {
 };
 
 function makeDomestic(isDomestic) {
+  this.isDomestic = isDomestic;
   console.log(`${this.type} по имени ${this.name} говорит ${this.makeSound()}`);
   return this;
 }
 
 const domesticDog = makeDomestic.bind(dog, true)();
-// Output: "Собака по имени Чарли говорит Гав-Гав"
 
 const wildBird = makeDomestic.call(bird, false);
-// Output: "Воробей по имени Петя говорит Чик-чирик"
+
+makeDomestic.bind(dog)();
+
+makeDomestic.call(dog);
+
+makeDomestic.apply(dog);
