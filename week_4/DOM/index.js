@@ -39,3 +39,4 @@ allNavigationBtn.forEach((button, index) => {
 const createTaskBlok = document.querySelector(".create-task-block");
 const submitBtn = createTaskBlok.querySelector("[type=submit]");
 console.log("submitBtn", submitBtn);
+
