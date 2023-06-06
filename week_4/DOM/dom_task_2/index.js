@@ -24,9 +24,7 @@ const tasks = [
 // Получаем ссылку на элемент .tasks-list
 const tasksList = document.querySelector(".tasks-list");
 
-
 function createTaskElement(task) {
-
   const taskItem = document.createElement("div");
   taskItem.classList.add("task-item");
   taskItem.setAttribute("data-task-id", task.id);
@@ -34,10 +32,8 @@ function createTaskElement(task) {
   const mainContainer = document.createElement("div");
   mainContainer.classList.add("task-item__main-container");
 
-
   const mainContent = document.createElement("div");
   mainContent.classList.add("task-item__main-content");
-
 
   const checkboxForm = document.createElement("form");
   checkboxForm.classList.add("checkbox-form");
@@ -50,14 +46,12 @@ function createTaskElement(task) {
   checkboxForm.appendChild(checkbox);
   checkboxForm.appendChild(label);
 
-
   const taskText = document.createElement("span");
   taskText.classList.add("task-item__text");
   taskText.textContent = task.text;
 
   mainContent.appendChild(checkboxForm);
   mainContent.appendChild(taskText);
-
 
   const deleteButton = document.createElement("button");
   deleteButton.classList.add(
@@ -68,7 +62,7 @@ function createTaskElement(task) {
   deleteButton.setAttribute("data-delete-task-id", task.id);
   deleteButton.textContent = "Удалить";
 
-   mainContainer.appendChild(mainContent);
+  mainContainer.appendChild(mainContent);
   mainContainer.appendChild(deleteButton);
 
   taskItem.appendChild(mainContainer);
@@ -76,14 +70,11 @@ function createTaskElement(task) {
   return taskItem;
 }
 
-
 function renderTasks() {
-
   tasks.forEach((task) => {
     const taskElement = createTaskElement(task);
     tasksList.appendChild(taskElement);
   });
 }
 
-// Вызываем функцию отрисовки задач
 renderTasks();
