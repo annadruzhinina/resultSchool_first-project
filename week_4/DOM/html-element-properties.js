@@ -54,7 +54,7 @@ const taskItem = taskItemText.closest(".task-item");
 console.log(taskItem);
 
 // classList add, remove, toggle
-const firstNavBtn = document.querySelector(".main-navigation__button-item");
+const firstNavBtn = document.querySelector(".main-navigation__button-item");    
 console.log(firstNavBtn);
 firstNavBtn.classList.add("main-navigation__button-item_selected");
 firstNavBtn.classList.remove("main-navigation__button-item_selected");
