@@ -24,22 +24,21 @@ const tasks = [
 // Получаем ссылку на элемент .tasks-list
 const tasksList = document.querySelector(".tasks-list");
 
-// Функция для создания элемента задачи на основе данных
+
 function createTaskElement(task) {
-  // Создаем контейнер для задачи
+
   const taskItem = document.createElement("div");
   taskItem.classList.add("task-item");
   taskItem.setAttribute("data-task-id", task.id);
 
-  // Создаем основной контейнер
   const mainContainer = document.createElement("div");
   mainContainer.classList.add("task-item__main-container");
 
-  // Создаем контейнер для основного содержимого
+
   const mainContent = document.createElement("div");
   mainContent.classList.add("task-item__main-content");
 
-  // Создаем форму с чекбоксом
+
   const checkboxForm = document.createElement("form");
   checkboxForm.classList.add("checkbox-form");
   const checkbox = document.createElement("input");
@@ -51,16 +50,15 @@ function createTaskElement(task) {
   checkboxForm.appendChild(checkbox);
   checkboxForm.appendChild(label);
 
-  // Добавляем текст задачи
+
   const taskText = document.createElement("span");
   taskText.classList.add("task-item__text");
   taskText.textContent = task.text;
 
-  // Добавляем чекбокс и текст в основной контейнер
   mainContent.appendChild(checkboxForm);
   mainContent.appendChild(taskText);
 
-  // Создаем кнопку удаления
+
   const deleteButton = document.createElement("button");
   deleteButton.classList.add(
     "task-item__delete-button",
@@ -70,19 +68,17 @@ function createTaskElement(task) {
   deleteButton.setAttribute("data-delete-task-id", task.id);
   deleteButton.textContent = "Удалить";
 
-  // Добавляем основное содержимое и кнопку удаления в основной контейнер
-  mainContainer.appendChild(mainContent);
+   mainContainer.appendChild(mainContent);
   mainContainer.appendChild(deleteButton);
 
-  // Добавляем основной контейнер в элемент задачи
   taskItem.appendChild(mainContainer);
 
   return taskItem;
 }
 
-// Отрисовываем задачи
+
 function renderTasks() {
-  // Создаем элементы задач и добавляем их в список
+
   tasks.forEach((task) => {
     const taskElement = createTaskElement(task);
     tasksList.appendChild(taskElement);
