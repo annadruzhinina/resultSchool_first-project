@@ -14,6 +14,11 @@ const tasks = [
     completed: false,
     text: "Выполнить ДЗ после урока",
   },
+  {
+    id: "1138465078064",
+    completed: false,
+    text: " TEST Выполнить ДЗ после урока",
+  },
 ];
 
 // Получаем ссылку на элемент .tasks-list
@@ -77,9 +82,6 @@ function createTaskElement(task) {
 
 // Отрисовываем задачи
 function renderTasks() {
-  // Очищаем список задач
-  tasksList.innerHTML = "";
-
   // Создаем элементы задач и добавляем их в список
   tasks.forEach((task) => {
     const taskElement = createTaskElement(task);
