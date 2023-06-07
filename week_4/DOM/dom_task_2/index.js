@@ -43,15 +43,15 @@ function createTaskElement(task) {
   checkbox.setAttribute("id", `task-${task.id}`);
   const label = document.createElement("label");
   label.setAttribute("for", `task-${task.id}`);
-  checkboxForm.appendChild(checkbox);
-  checkboxForm.appendChild(label);
+  checkboxForm.appendChild(checkbox, label);
+  // checkboxForm.appendChild(label);
 
   const taskText = document.createElement("span");
   taskText.classList.add("task-item__text");
   taskText.textContent = task.text;
 
-  mainContent.appendChild(checkboxForm);
-  mainContent.appendChild(taskText);
+  mainContent.appendChild(checkboxForm, taskText);
+  // mainContent.appendChild(taskText);
 
   const deleteButton = document.createElement("button");
   deleteButton.classList.add(
@@ -62,19 +62,30 @@ function createTaskElement(task) {
   deleteButton.setAttribute("data-delete-task-id", task.id);
   deleteButton.textContent = "Удалить";
 
-  mainContainer.appendChild(mainContent);
-  mainContainer.appendChild(deleteButton);
+  mainContainer.appendChild(mainContent, deleteButton);
+  // mainContainer.appendChild(deleteButton);
 
   taskItem.appendChild(mainContainer);
 
   return taskItem;
 }
 
+// function renderTasks() {
+//   tasks.forEach((task) => {
+//     const taskElement = createTaskElement(task);
+//     tasksList.appendChild(taskElement);
+//   });
+// }
+
 function renderTasks() {
+  const fragment = document.createDocumentFragment();
+
   tasks.forEach((task) => {
     const taskElement = createTaskElement(task);
-    tasksList.appendChild(taskElement);
+    fragment.appendChild(taskElement);
   });
+
+  tasksList.append(fragment);
 }
 
 renderTasks();
