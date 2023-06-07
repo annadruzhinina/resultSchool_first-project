@@ -57,14 +57,45 @@ form.addEventListener("submit", function (event) {
   // Step 3: Retrieve task text input value
   const taskTextInput = document.querySelector(".create-task-block__input");
   const taskText = taskTextInput.value;
+
   // console.log(taskTextInput);
   // console.log(taskText);
+  if (taskText.trim() !== "") {
+    // Check if taskText is not empty
+    // Step 4: Check if task with the same text already exists
+    const existingTasks = document.querySelectorAll(".task-item__text");
+    let taskAlreadyExists = false;
 
-  // Step 4: Create new task element
-  const newTask = createTaskElement(taskText);
-  console.log(newTask);
-  // Step 5: Append new task element to container
-  tasksList.appendChild(newTask);
+    for (let i = 0; i < existingTasks.length; i++) {
+      if (existingTasks[i].textContent.trim() === taskText.trim()) {
+        taskAlreadyExists = true;
+        break;
+      }
+    }
+
+    if (!taskAlreadyExists) {
+      // Step 5: Create new task element
+      const newTask = createTaskElement(taskText);
+      console.log(newTask);
+
+      // Step 6: Append new task element to container
+      tasksList.appendChild(newTask);
+    } else {
+      // Step 7: Display an error message
+      const error = document.createElement("span");
+      error.classList.add("error-message-block");
+      error.textContent = "Задача с таким названием уже существует.";
+      console.log(error);
+      tasksList.appendChild(error);
+    }
+  } else {
+    // Step 8: Display an error message for empty task text
+    const error = document.createElement("span");
+    error.classList.add("error-message-block");
+    error.textContent = "Название задачи не должно быть пустым.";
+    console.log(error);
+    tasksList.appendChild(error);
+  }
 
   // Clear the input field
   taskTextInput.value = "";
