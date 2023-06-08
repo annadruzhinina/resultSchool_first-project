@@ -96,26 +96,31 @@ document.addEventListener("keyup", (event) => {
 //     p.style.fontWeight = "normal";
 //   }
 // });
-
+const tooltip = document.querySelector(".task-item__text");
+console.log(tooltip);
 //⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ mouseover ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️
 const createToolTipe = (text) => {
-  const tooltip = document.querySelector("span");
+  // const tooltip = document.querySelector(".task-item__text");
+  // console.log(tooltip);
   tooltip.textContent = text;
   tooltip.className = "tooltip";
   return tooltip;
 };
 
 document.addEventListener("mouseover", (event) => {
-  console.log(event);
+  // console.log(event);
   const { target } = event;
-  // console.log(target);
+  console.log(target);
   const isOverDeleteBtn = target.className.includes("task-item__delete-button");
   if (isOverDeleteBtn) {
     const taskItemHTML = target.closest(".task-item");
+    console.log(taskItemHTML);
     const taskId = taskItemHTML?.dataset.taskId;
     if (taskId) {
       const tooltipHTML = createToolTipe(`Delete task by number ${taskId}?`);
-      target.append(tooltipHTML);
+      // target.append(tooltipHTML);
+      console.log(target);
+      console.log(taskId);
     }
   }
 });
@@ -136,6 +141,45 @@ document.addEventListener("mouseout", (event) => {
 });
 
 //⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ mousemoove ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️
-document.addEventListener("mousemove", (event) => {
-  console.log(event);
+// document.addEventListener("mousemove", (event) => {
+//   console.log(event);
+// });
+
+// contextmenu
+document.addEventListener("contextmenu", (event) => {
+  // console.log(event);
+  event.preventDefault();
+});
+
+//⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ change ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️
+//⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ input ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️
+
+const checkTaskNameInputOnValidation = (value) => {
+  if (!value || value.includes("@")) {
+    return false;
+  } else {
+    return true;
+  }
+};
+
+const createTaskBlock = document.querySelector(".create-task-block");
+const taskNameInput = document.querySelector(".create-task-block__input");
+
+taskNameInput.addEventListener("change", (event) => {
+  // console.log(event);
+  const { target } = event;
+  const { value } = target;
+  console.log(target);
+  console.log(value);
+  const isValid = checkTaskNameInputOnValidation(value);
+  const messageBlockFromDOM = documet.querySelector(".error-message-block");
+  if (!isValid) {
+    const newMessageBlock = document.createElement("span");
+    newMessageBlock.className = "error-message-block";
+    newMessageBlock.textContent =
+      "Error. Text for Task should not to be empty or contain '@' symbol!";
+    createTaskBlock.append(newMessageBlock);
+  } else if (isValid && messageBlockFromDOM) {
+    messageBlockFromDOM.remove();
+  }
 });
