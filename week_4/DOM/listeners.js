@@ -67,60 +67,24 @@ document.addEventListener("keyup", (event) => {
   }
 });
 
-// example
-// <!DOCTYPE html>
-// <html>
-//     <head>
-//         <title>Пример документа</title>
-//     </head>
-//     <body>
-//         <div id="main">
-//             <p class="text" data-id="1">Первый абзац</p>
-//             <p class="text" data-id="2">Второй абзац</p>
-//         </div>
-//     </body>
-// </html>
-
-// document.addEventListener("keydown", (event) => {
-//   const key = event.key;
-//   const p = document.querySelector(`[data-id='${key}']`);
-//   if (p) {
-//     p.style.fontWeight = "bold";
-//   }
-// });
-
-// document.addEventListener("keyup", (event) => {
-//   const key = event.key;
-//   const p = document.querySelector(`[data-id='${key}']`);
-//   if (p) {
-//     p.style.fontWeight = "normal";
-//   }
-// });
-const tooltip = document.querySelector(".task-item__text");
-console.log(tooltip);
-//⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ mouseover ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️
-const createToolTipe = (text) => {
-  // const tooltip = document.querySelector(".task-item__text");
-  // console.log(tooltip);
+const createTooltip = (text) => {
+  const tooltip = document.createElement("div");
   tooltip.textContent = text;
   tooltip.className = "tooltip";
   return tooltip;
 };
 
 document.addEventListener("mouseover", (event) => {
-  // console.log(event);
   const { target } = event;
-  console.log(target);
   const isOverDeleteBtn = target.className.includes("task-item__delete-button");
+
   if (isOverDeleteBtn) {
     const taskItemHTML = target.closest(".task-item");
-    console.log(taskItemHTML);
     const taskId = taskItemHTML?.dataset.taskId;
+
     if (taskId) {
-      const tooltipHTML = createToolTipe(`Delete task by number ${taskId}?`);
-      // target.append(tooltipHTML);
-      console.log(target);
-      console.log(taskId);
+      const tooltipHTML = createTooltip(`Delete task by number ${taskId}?`);
+      target.append(tooltipHTML);
     }
   }
 });
@@ -132,8 +96,10 @@ document.addEventListener("mouseout", (event) => {
   const isOutFromDeleteBtn = target.className.includes(
     "task-item__delete-button"
   );
+
   if (isOutFromDeleteBtn) {
-    const tooltip = document.querySelector(".tooltip");
+    const tooltip = target.querySelector(".tooltip");
+
     if (tooltip) {
       tooltip.remove();
     }
