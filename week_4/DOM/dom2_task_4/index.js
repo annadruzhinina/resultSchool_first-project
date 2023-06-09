@@ -142,50 +142,16 @@ form.addEventListener("submit", function (event) {
 
   // Clear the input field
   taskTextInput.value = "";
-  // Получаем ссылку на кнопку Tab
-  const tabButton = document.querySelector("#tab-button");
+  // Select the elements that you want to modify
+  const body = document.body;
+  const tabKey = 9;
 
-  // Получаем ссылку на элемент <body>
-  const bodyElement = document.querySelector("body");
-
-  // Получаем ссылки на все элементы с классом .task-item
-  const taskItems = document.querySelectorAll(".task-item");
-
-  // Получаем ссылки на все элементы с тегом button
-  const buttons = document.querySelectorAll("button");
-
-  // Функция для изменения темы
-  function toggleTheme() {
-    // Проверяем текущую тему
-    const isDarkTheme = bodyElement.classList.contains("dark-theme");
-
-    // Если текущая тема - темная, переключаем на светлую
-    if (isDarkTheme) {
-      bodyElement.classList.remove("dark-theme");
-      bodyElement.style.background = "initial";
-
-      taskItems.forEach((taskItem) => {
-        taskItem.style.color = "initial";
-      });
-
-      buttons.forEach((button) => {
-        button.style.border = "none";
-      });
-    } else {
-      // Если текущая тема - светлая, переключаем на темную
-      bodyElement.classList.add("dark-theme");
-      bodyElement.style.background = "#24292E";
-
-      taskItems.forEach((taskItem) => {
-        taskItem.style.color = "#ffffff";
-      });
-
-      buttons.forEach((button) => {
-        button.style.border = "1px solid #ffffff";
-      });
+  // Listen for the keydown event on the document
+  document.addEventListener("keydown", (event) => {
+    // Check if the Tab key is pressed
+    if (event.keyCode === tabKey) {
+      // Toggle the class on the body element to switch between light and dark mode
+      body.classList.toggle("dark-mode");
     }
-  }
-
-  // Добавляем обработчик события для кнопки Tab
-  tabButton.addEventListener("click", toggleTheme);
+  });
 });
