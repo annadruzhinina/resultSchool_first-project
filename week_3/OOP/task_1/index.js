@@ -15,14 +15,6 @@ class Student {
   }
 }
 
-Student.prototype.setTechnologies = function (technologies) {
-  this.technologies = [...this.technologies, ...technologies];
-};
-
-Student.prototype.setNewStatus = function (newStatus) {
-  this.status = newStatus;
-};
-
 const student = new Student("Maxim", 20);
 student.setTechnologies(["HTML", "CSS", "JavaScript"]);
 student.setNewStatus("Middle");
