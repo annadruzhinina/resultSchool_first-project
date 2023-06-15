@@ -1,6 +1,6 @@
 const developer = {
   name: "Anna",
-  isJsDEV: true,
+  isJsDEV: false,
 };
 
 setTimeout(() => {
@@ -16,6 +16,7 @@ const promise = new Promise((resolve, reject) => {
     reject(`${developer.name} is not JavaScropt developer`);
   }
 });
+
 console.log("promise");
 
 promise
