@@ -1,24 +1,16 @@
-// <li class="photo-item">
-//   <img class="photo-item__image" src="https://via.placeholder.com/600/92c952">
-//   <h3 class="photo-item__title">
-//     accusamus beatae ad facilis cum similique qui sunt
-//   </h3>
-// </li>
-
 const PHOTOS_URL = " https://jsonplaceholder.typicode.com/photos/";
 
 function getFastestLoadedPhoto(ids) {
-  // Create a promise for each photo id
-  let promises = ids.map(function (id) {
-    let url = `https://jsonplaceholder.typicode.com/photos/${id}`;
+  let promises = ids.map((id) => {
+    let url = `${PHOTOS_URL}/${id}`;
     return fetch(url)
-      .then(function (response) {
+      .then((response) => {
         if (!response.ok) {
           throw new Error(`Failed to fetch photo with id ${id}`);
         }
         return response.json();
       })
-      .then(function (data) {
+      .then((data) => {
         return {
           id: id,
           data: data,
