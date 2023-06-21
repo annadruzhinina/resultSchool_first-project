@@ -15,22 +15,24 @@ const bird = {
 };
 
 function makeDomestic(isDomestic) {
-  this.isDomestic = isDomestic;
-  console.log(`${this.type} по имени ${this.name} говорит ${this.makeSound()}`);
-  return this;
+  const newObject = {
+    name: this.name,
+    type: this.type,
+    isDomestic: isDomestic,
+    makeSound: this.makeSound(),
+  };
+
+  console.log(
+    `${newObject.type} по имени ${newObject.name} говорит ${newObject.makeSound}`
+  );
+  return newObject;
 }
-makeDomestic.bind(dog, true)();
-// Выводит: "Собака по имени Чарли говорит Гав-Гав"
-// Возвращает: {name: 'Чарли', type: 'Собака', isDomestic: true, makeSound: ƒ}
+
 const dogResult = makeDomestic.bind(dog, true)();
 console.log(dogResult);
 
-makeDomestic.call(bird, false);
-// Выводит: "Воробей по имени Петя говорит Чик-чирик"
-// Возвращает: {name: 'Петя', type: 'Воробей', isDomestic: false, makeSound: ƒ}
-const birdResult = makeDomestic.bind(bird, true)();
-console.log(dogResult);
+const birdResult = makeDomestic.call(bird, false);
+console.log(birdResult);
 
-makeDomestic.apply(bird, [false]);
-// Выводит: "Воробей по имени Петя говорит Чик-чирик"
-// Возвращает: {name: 'Петя', type: 'Воробей', isDomestic: false, makeSound: ƒ}
+const birdResult2 = makeDomestic.apply(bird, [false]);
+console.log(birdResult2);
