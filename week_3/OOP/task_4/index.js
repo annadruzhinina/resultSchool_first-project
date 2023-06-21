@@ -4,7 +4,10 @@ class Dictionary {
     this.words = {};
   }
   add(word, description) {
-    this.words[word] = description;
+    this.words[word] = {
+      word,
+      description,
+    };
   }
   remove(word) {
     if (word in this.words) {
@@ -15,7 +18,9 @@ class Dictionary {
     return this.words[word];
   }
   showAllWords() {
-    return this.words;
+    for (let key in this.words) {
+      console.log(this.words[key]);
+    }
   }
 }
 
@@ -27,26 +32,32 @@ class HardWordsDictionary extends Dictionary {
     const wordObject = {
       word: word,
       description: description,
-      isDifficult: isDifficult,
+      isDifficult: true,
     };
     this.words[word] = wordObject;
   }
 }
 
-const dictionary = new Dictionary("New book");
-dictionary.add("JavaScript", "Very popular language");
-dictionary.add("Python", "Lorem lorem lorem");
+const hardWordsDictionary = new HardWordsDictionary("Сложные слова");
 
-dictionary.remove("JavaScript");
-dictionary.showAllWords();
-console.log(dictionary);
+hardWordsDictionary.add(
+  "дилетант",
+  "Тот, кто занимается наукой или искусством без специальной подготовки, обладая только поверхностными знаниями."
+);
 
-const hardWordsDictionary = new HardWordsDictionary("Hard Words Dictionary");
-hardWordsDictionary.add("test1", "description test1");
-hardWordsDictionary.add("test2", "description test2");
-hardWordsDictionary.add("test3", "description test3");
-console.log("hardWordsDictionary", hardWordsDictionary.showAllWords());
-// const obj = {};
-// const dynamicKey = "name";
-// obj[dynamicKey] = "Elena";
-// console.log(obj);
+hardWordsDictionary.add(
+  "неологизм",
+  "Новое слово или выражение, а также новое значение старого слова."
+);
+
+hardWordsDictionary.add(
+  "квант",
+  "Неделимая часть какой-либо величины в физике."
+);
+
+// hardWordsDictionary.remove("неологизм");
+
+hardWordsDictionary.showAllWords();
+console.log(hardWordsDictionary.showAllWords());
+console.log(hardWordsDictionary);
+// дилетант - Тот, кто занимается наукой или искусством // без специальной подготовки, обладая только поверхностными знаниями.// квант - Неделимая часть какой-либо величины в физике.
