@@ -4,7 +4,11 @@ class Dictionary {
     this.words = {};
   }
   add(word, description) {
-    this.words[word] = description;
+    this.words[word] = {
+      word,
+      description,
+    };
+    console.log("description_word", this.words[word]);
   }
   remove(word) {
     if (word in this.words) {
@@ -15,7 +19,9 @@ class Dictionary {
     return this.words[word];
   }
   showAllWords() {
-    return this.words;
+    for (let key in this.words) {
+      console.log(this.words[key]);
+    }
   }
 }
 
@@ -26,8 +32,3 @@ dictionary.add("Python", "Lorem lorem lorem");
 dictionary.remove("JavaScript");
 dictionary.showAllWords();
 console.log(dictionary);
-
-// const obj = {};
-// const dynamicKey = "name";
-// obj[dynamicKey] = "Elena";
-// console.log(obj);
