@@ -1,0 +1,15 @@
+body {
+  background: black;
+}
+h1 {
+  display: flex;
+  color: wheat;
+  justify-content: center;
+}
+
+.js-image {
+  display: flex;
+  margin: auto;
+  width: 600px;
+  height: 400px;
+}
