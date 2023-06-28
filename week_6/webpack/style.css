@@ -1,0 +1,17 @@
+body {
+  background: skyblue;
+  margin: 0;
+  padding: 0;
+  color: aliceblue;
+}
+
+img {
+  width: 200px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  margin: auto;
+}
+h1 {
+  color: white;
+}
