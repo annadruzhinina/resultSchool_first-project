@@ -1,0 +1,54 @@
+body {
+	color: white;
+	background: url('../public/img/download.jpeg') no-repeat center center fixed;
+	-webkit-background-size: cover;
+	background-size: cover;
+}
+
+.app {
+	text-align: center;
+}
+
+.header {
+	background-color: #282c34;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	font-size: calc(10px + 2vmin);
+	color: white;
+}
+
+.btngrid {
+	max-width: 300px;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	margin: auto;
+}
+
+button {
+	border-radius: 4px;
+	width: 100px;
+	height: 28px;
+	margin-bottom: 4px;
+	margin-right: 2px;
+}
+button:hover {
+	background-color: black;
+	color: white;
+}
+
+input {
+	min-height: 26px;
+	border: none;
+}
+
+.success {
+	background-color: rgb(47, 226, 47);
+}
+
+.error {
+	background-color: rgba(255, 9, 9, 0.517);
+	color: white;
+}
